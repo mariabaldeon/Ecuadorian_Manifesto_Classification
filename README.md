@@ -14,25 +14,25 @@
 
 # Dataset
 
-In this work we used two datasets. First, we make available a new Ecuadorian manifesto dataset, located in *Datasets/Database-Ecuador.csv)*. The Ecuadorian corpus was obtained from the official websites of the two 2021 Ecuadorian presidential candidates, Andrés Arauz and Guillermo Lasso. The documents were pre-processed by removing all images and tables. The annotation process was divided into two tasks, following the Manifesto Coding Instructions 5th edition. First, the text was unitized into sentences or quasi-sentences, where each unit conveyed a similar message. Then, a political expert and a political science student categorized the quasi-sentences into one of the seven domains explained in section 3.1 of our paper. Only quasi-sentences where the two annotators agreed on the same category were kept from training, resulting in a dataset with 1809 sentences and quasi-sentences. 
+<p align="justify"> In this work we used two datasets. First, we make available a new Ecuadorian manifesto dataset, located in *Datasets/Database-Ecuador.csv)*. The Ecuadorian corpus was obtained from the official websites of the two 2021 Ecuadorian presidential candidates, Andrés Arauz and Guillermo Lasso. The documents were pre-processed by removing all images and tables. The annotation process was divided into two tasks, following the Manifesto Coding Instructions 5th edition. First, the text was unitized into sentences or quasi-sentences, where each unit conveyed a similar message. Then, a political expert and a political science student categorized the quasi-sentences into one of the seven domains explained in section 3.1 of our paper. Only quasi-sentences where the two annotators agreed on the same category were kept from training, resulting in a dataset with 1809 sentences and quasi-sentences. 
 
-The second dataset comprised of all Spanish-written manifestos from the Manifesto Comparative Project (CMP). The link to this great database can be found [here](https://manifesto-project.wzb.eu/). We have included in our repository the manifestos from Uruguay and Spain, as it proved to be the best combination for Ecuadorian manifesto classification. However, if you use these two datasets for your own work, dont forget to cite the CMP. 
+The second dataset comprised of all Spanish-written manifestos from the Manifesto Comparative Project (CMP). The link to this great database can be found [here](https://manifesto-project.wzb.eu/). We have included in our repository the manifestos from Uruguay and Spain (*Datasets/Database-Uruguay.csv)*, *Datasets/Database-Spain.csv)*), as it proved to be the best combination for Ecuadorian manifesto classification. However, if you use these two datasets for your own work, dont forget to cite the CMP. </p>
 
 # Networks 
-We test the performance between DistilBERT and RoBERTa. You can utilized either networks through the flag: 
+We test the performance between DistilBERT and RoBERTa. You can utilize either networks through the flag: 
 ```
 --network roberta
 --network distilbert
 ```
 This a required argument.
 # Training 
-This code allows training and evaluating on the Ecuadorian dataset using a fivefold approach by running the following code:  
+This code allows training and evaluating on the Ecuadorian dataset, using a fivefold approach, by running the following command:  
 ```
 nohup python3 main.py --task train_Ecuador --network roberta & 
 
 nohup python3 main.py --task train_Ecuador --network distilbert & 
 ```
-or training on the dataset composed of manifestos from Uruguay and Spain and evaluated on the Ecuadorian dataset with a fivefold approach through the following code: 
+or training on the dataset composed of manifestos from Uruguay and Spain, and evaluate on the Ecuadorian dataset (fivefold approach) with the following command: 
 ```
 nohup python3 main.py --task train_Uruguay_Spain --network roberta & 
 
