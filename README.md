@@ -1,0 +1,1 @@
+# Ecuadorian_Manifesto_Classification
