@@ -14,7 +14,7 @@ Content analysis of political manifestos is necessary to understand a party´s s
 
 # Dataset
 
-In this work we use two datasets. The model can be trained with the manifestos from Uruguay and Spain, taken from the Manifesto Comparative Project (CMP). The link to this great database can be found [here]([https://promise12.grand-challenge.org/](https://manifesto-project.wzb.eu/])
+In this work we use two datasets. The model can be trained with the manifestos from Uruguay and Spain, taken from the Manifesto Comparative Project (CMP). The link to this great database can be found [here](https://manifesto-project.wzb.eu/)
 
 
 # Training 
