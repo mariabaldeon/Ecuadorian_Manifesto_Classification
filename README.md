@@ -14,20 +14,27 @@ Content analysis of political manifestos is necessary to understand a party´s s
 
 # Dataset
 
-In this work we use two datasets. The model can be trained with the manifestos from Uruguay and Spain, taken from the Manifesto Comparative Project (CMP). The link to this great database can be found [here](https://manifesto-project.wzb.eu/)
+In this work we used two datasets. First, we make available a new Ecuadorian manifesto dataset, located in *Datasets/Database-Ecuador.csv)*. The Ecuadorian corpus was obtained from the official websites of the two 2021 Ecuadorian presidential candidates, Andrés Arauz and Guillermo Lasso. The documents were pre-processed by removing all images and tables. The annotation process was divided into two tasks following the Manifesto Coding Instructions 5th edition. First, the text was unitized into sentences or quasi-sentences, where each unit conveyed a similar message. Then, a political expert and a political science student categorized the quasi-sentences into one of the seven domains explained in section 3.1 of our paper. Only quasi-sentences where the two annotators agreed on the same category were kept from training, resulting in dataset with 1809 sentences and quasi-sentences. 
 
+The second dataset comprised of all Spanish-written manifestos from the Manifesto Comparative Project (CMP). The link to this great database can be found [here](https://manifesto-project.wzb.eu/). We have included in our repository the manifestos from Uruguay and Spain, as it proved to be the best combination for Ecuadorian manifesto classification. However, if you use these two datasets for your own work, dont forget to cite the CMP. 
 
+# Networks 
+We test the performance between DistilBERT and RoBERTa. You use either networks using the flag: 
+```
+--network roberta
+--network distilbert
+```
+This a requiered argument
 # Training 
-To carry out the training run: 
+This code allows training and evaluating on the Ecuadorian dataset using a fivefold approach by running the following code:  
 ```
-nohup python3 main.py --task train & 
-```
-The code assumes the training dataset is located in the directory Datasets/Train. If it is in another directory, specify the path using the --dataTrain argument. The training will be performed in the five folds. For each fold two folders named 2d_training_logs and 3d_training_logs will appear. Inside the folders, the training logs and weights wil be saved for the 2d and 3d CNNs. 
+nohup python3 main.py --task train_Ecuador --network roberta & 
 
-# Evaluation
-To carry out the evaluation run: 
+nohup python3 main.py --task train_Ecuador --network distilbert & 
 ```
-nohup python3 main.py --task evaluate & 
+or training on the dataset composed of manifestos from Uruguay and Spain and tested on the Ecuadorian dataset with a fivefold approach through the following code: 
 ```
-The code assumes the testing dataset is located in the directory Datasets/Test. If it is in another directory, specify the path using the --dataTest argument.The code will evaluate the 2D CNN ensemble, 3D CNN ensemble, and PPZSeg-Net. Evaluation metrics will be saved in a .csv file in a folder named Evaluation_metrics. The evaluation  metrics considered are the Dice similarity coefficient (DS) and Haussdorff distance (HD). These metrices will be calculated for the 2D CNN ensemble, 3D CNN ensemble, and PPZSeg-Net. The segmentation results will be saved in the folders Results_2D.mat, Results_3D.mat, and Results_PPZSegNet.mat for the 2D CNN ensemble, 3D CNN ensemble, and PPZSeg-Net, respectively. The trained weights from this work should be located in the directory Networks/weights (link to weights: [link](https://drive.google.com/drive/folders/1wW_aBqUAe9g6eQCN9de1ILyDLg0dGPb0?usp=share_link) ). These weights will  be used for evaluation. If you wan to use other weights, locate them in this folder with the corresponding name k{fold}_{network}D.hdf5, where fold refers to the fold trained on and network to the type of network 2D or 3D.  
+nohup python3 main.py --task train_Uruguay_Spain --network roberta & 
 
+nohup python3 main.py --task train_Uruguay_Spain --network distilbert & 
+```
