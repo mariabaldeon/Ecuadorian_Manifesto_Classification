@@ -38,3 +38,15 @@ nohup python3 main.py --task train_Uruguay_Spain --network roberta &
 
 nohup python3 main.py --task train_Uruguay_Spain --network distilbert & 
 ```
+# Citation
+If you use this code in your research, please cite our paper.
+```
+@inproceedings{barzallo2023zoom,
+  title={A Zoom into Ecuadorian Politics: Manifesto Text Classification using NLP},
+  author={Barzallo, Fernanda and Moscoso, Mar{\'\i}a Emilia and P{\'e}rez, Margorie and Baldeon-Calisto, Mar{\'\i}a and Navarrete, Danny and Riofr{\'\i}o, Daniel and Medina-P{\'e}rez, Pablo and Lai-Yuen, Susana K},
+  booktitle={2023 IEEE 13th International Conference on Pattern Recognition Systems (ICPRS)},
+  pages={1--6},
+  year={2023},
+  organization={IEEE}
+}
+```
